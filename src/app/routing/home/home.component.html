@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div class="main-content">
+    <div class="header-content">
+        <div class="emp-detail-text">
+            Employee Details <div class="emp-count">{{employeeCount}}</div>
+        </div>
+        <div class="options">
+            <button mat-raised-button class="search-button">
+                <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="search" class="icon"></mat-icon>
+            </button>
+        </div>
+        <div class="add-button">
+            <button routerLink="addEmployee" class="btn btn-success"><img [src]="addUrl" alt="Add User Logo">Add
+                User</button>
+        </div>
+    </div>
+    <div class="table-main">
+
+
+        <table id="table-display" class="table">
+            <tr>
+                <th class="profile-header"></th>
+                <th class="profile-header">Name</th>
+                <th class="profile-header">Gender</th>
+                <th class="profile-header">Department</th>
+                <th class="profile-header">Salary</th>
+                <th class="profile-header">Start Date</th>
+                <th class="profile-header">Actions</th>
+            </tr>
+            <tr *ngFor="let employee of employeeList">
+                <td>
+                    <img class="profile cell" src="{{employee.profilePic}}" alt="">
+                </td>
+                <td class="name cell">{{employee.name}}</td>
+                <td class="cell">{{employee.gender}}</td>
+                <td>
+                    <div class="dept">
+                        {{employee.department}}
+                    </div>
+                </td>
+                <td class="cell">{{employee.salary}}</td>
+                <td class="cell">{{employee.startDate}}</td>
+                <td class="cell">
+                    <button (click)= "updateEmployee(employee)" class="btn btn-success"><img
+                            src="../assets/icons/create-black-18dp.svg" alt="edit">
+                    </button>&nbsp;
+                    <button (click)= "deleteEmployee(employee)" class="btn btn-success"><img src="../assets/icons/delete-black-18dp.svg" alt="delete">
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+
+<router-outlet></router-outlet>
